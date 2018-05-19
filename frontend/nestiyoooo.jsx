@@ -1,6 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/App';
+
+
+import configureStore from './store/store';
+import Root from './components/root';
+
+import { fetchListings } from './actions/listings_actions';
+window.fetchListings = fetchListings;
+
 
 document.addEventListener('DOMContentLoaded', () => {
   const root = document.getElementById('root');
