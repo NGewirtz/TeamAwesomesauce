@@ -12,7 +12,6 @@ class ListingsIndex extends React.Component {
   }
 
   createList() {
-    debugger
     let listings = this.props.listings;
     return listings.map(listing => (
       <li>Id: {listing.id}, Price: {listing.price}</li>)
@@ -20,7 +19,6 @@ class ListingsIndex extends React.Component {
   }
 
   render() {
-    debugger
     if (!this.props.listings) {
       return null;
     } else {
