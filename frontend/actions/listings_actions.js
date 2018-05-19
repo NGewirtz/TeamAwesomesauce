@@ -12,9 +12,9 @@ export const receiveListings = listings => {
 
 
 //thunk actions
-export const fetchListings = () => dispatch => {
+export const fetchListings = (filters) => dispatch => {
   return (
-    APIUtilListings.fetchListings().then(listings => (
+    APIUtilListings.fetchListings(filters).then(listings => (
       dispatch(receiveListings(listings))
     ))
   );
