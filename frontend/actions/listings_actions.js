@@ -9,3 +9,13 @@ export const receiveListings = listings => {
     listings
   };
 };
+
+
+//thunk actions
+export const fetchListings = () => dispatch => {
+  return (
+    APIUtilListings.fetchListings().then(listings => (
+      dispatch(receiveListings(listings))
+    ))
+  );
+};

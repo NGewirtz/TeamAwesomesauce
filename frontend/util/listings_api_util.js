@@ -1,8 +1,6 @@
 export const fetchListings = () => {
   return $.ajax({
-    url: '/api/listings',
-    method: 'GET',
-    data: 'I don\'t know',
-    error: (err) => console.log(err)
+    url: "https://nestiolistings.com/api/v2/listings/350889/?key=effc73a30e0946e2acd5f06510ed52fe",
+    method: 'GET'
   });
 };
