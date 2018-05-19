@@ -1,17 +1,17 @@
 class Api::ListingsController < ApplicationController
   def index
-    listings = Listing.all
-
-    @listings = [];
-
-    if params[:bedrooms] == "All"
-      @listings = Listing.all
-    elsif params[:bedrooms]
-      listings.each {|listing| @listings.push(listing) if listing.bedrooms == params[:bedrooms]}
-    else
-      @listings = Listing.all
+    bedrooms = params[:bedrooms]
+    bathrooms = params[:bathrooms]
+    neighborhood = params[:neighborhood]
+    square_footage = params[:square_footage]
+    locations = Listing.where(neighborhood: neighborhood).pluck(:latitude, :longitude)
+    respond_to do |format|
+      format.json do
+        render json: {
+          price: Listing.price(bedrooms, bathrooms, neighborhood, square_footage),
+          locations: locations
+        }.to_json
+      end
     end
-
-    @listings
   end
 end
