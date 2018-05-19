@@ -90,5 +90,29 @@ video {
 header {
   height: 50px;
   width: 100%;
-  background-color: black;
+  background-color: #424242;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header .logo {
+  width: 96px;
+  height: 20px;
+  display: inline-block;
+  margin-left: 20px;
+}
+
+.price-container {
+  width: 200px;
+  height: 100px;
+  margin: auto;
+  margin-top: 50px;
+}
+
+.price {
+  font-size: 48px;
+  background: -webkit-linear-gradient(#4286f4, #e2d302);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }

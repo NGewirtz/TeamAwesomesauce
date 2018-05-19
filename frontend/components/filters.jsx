@@ -2,7 +2,11 @@ import React from 'react';
 
 class Filters extends React.Component {
   render() {
-    return <div>This is filter</div>;
+    return (
+      <div>
+        <form className="filter" />
+      </div>
+    );
   }
 }
 

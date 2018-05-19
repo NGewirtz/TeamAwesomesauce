@@ -4,7 +4,7 @@ class Header extends React.Component {
   render() {
     return (
       <header>
-        <img src="images/nestio.svg" />
+        <img className="logo" src={`${window.logo}`} />
       </header>
     );
   }
