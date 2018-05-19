@@ -4,12 +4,13 @@ class Api::ListingsController < ApplicationController
 
     @listings = [];
 
-    if params[:price]
-      listings.each {|listing| @listings.push(listing) if listing.price > 10000}
+    if params[:bedrooms] == "All"
+      @listings = Listing.all
+    elsif params[:bedrooms]
+      listings.each {|listing| @listings.push(listing) if listing.bedrooms == params[:bedrooms]}
     else
       @listings = Listing.all
     end
-
 
     @listings
   end
