@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import MarkerManager from './MarkerManager';
 
 
 class Gmap extends React.Component {
@@ -17,9 +18,9 @@ class Gmap extends React.Component {
   }
 
   componentDidUpdate() {
+    this.MarkerManager.updateMarkers(this.props.listings);
 
-    //here we will put markers logic
-
+    //here: register listeners to update the bounds param, if we will have one
   }
 
   render() {
