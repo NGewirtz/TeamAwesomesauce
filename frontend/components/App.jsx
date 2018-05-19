@@ -1,8 +1,15 @@
 import React from 'react';
+import Header from './Header';
+import Filters from './filters';
+import Charts from './charts';
+import EstateMap from './map';
 
 const App = () => (
   <div>
-    <h1>NestiYoooo</h1>
+    <Header />
+    <Filters />
+    <Charts />
+    <EstateMap />
   </div>
 );
 
