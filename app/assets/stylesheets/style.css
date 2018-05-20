@@ -103,16 +103,26 @@ header .logo {
   margin-left: 20px;
 }
 
+.chart {
+  width: 250px;
+  height: 250px;
+  margin: auto;
+}
+
 .price-container {
-  width: 200px;
-  height: 100px;
+  width: 300px;
+  height: 320px;
   margin: auto;
   margin-top: 50px;
+  padding-top: 10px;
+  text-align: center;
+  box-shadow: 2px 2px 2px 3px #888888;
 }
 
 .price {
   font-size: 48px;
-  background: -webkit-linear-gradient(#4286f4, #e2d302);
+  font-family: 'Economica', sans-serif;
+  background: -webkit-linear-gradient(#fa709a, #fee140);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
