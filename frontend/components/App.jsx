@@ -31,6 +31,7 @@ class App extends React.Component {
         <div className="container">
           <Filter handleChange={this.handleChange} />
           <Charts price={this.state.price} />
+          <Gmap locations={this.state.locations} />
         </div>
       </div>
     );
