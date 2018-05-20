@@ -41,9 +41,6 @@ class Listing < ApplicationRecord
     price
   end
 
-  def
-  end
-
   private
 
   def self.find_median(sym, val)
