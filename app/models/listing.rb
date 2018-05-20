@@ -32,7 +32,7 @@ class Listing < ApplicationRecord
     bathrooms = find_median(:bathrooms, bathrooms.to_f)
     neighborhood = find_median(:neighborhood, neighborhood)
     price = (bedrooms + bathrooms + neighborhood) / 3
-    { price: price }
+    price
   end
 
   private
