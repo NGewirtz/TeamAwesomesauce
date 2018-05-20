@@ -1,1 +1,1 @@
-json.extract! listing, :id, :price, :bedrooms
+json.extract! listing, :id, :bedrooms

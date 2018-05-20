@@ -10,6 +10,7 @@ import {
 } from 'react-router-dom';
 
 import Gmap from './map';
+import Charts from './charts';
 import ListingsIndexContainer from './listings_index_container';
 import ListingsFilterFormContainer from './listings_filter_form_container';
 
