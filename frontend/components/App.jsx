@@ -18,39 +18,46 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    fetchListings({ bedrooms: 0, neighborhood: "Battery Park City", bathrooms: 1, graph_data: "pics" })
-      .then(response => {
-        console.log(response);
-        this.setState(response);
-      });
+    fetchListings({
+      bedrooms: 0,
+      neighborhood: 'Battery Park City',
+      bathrooms: 1,
+      graph_data: 'pics'
+    }).then(response => {
+      this.setState(response);
+    });
   }
 
   handleChange(bedrooms, neighborhood, bathrooms, graph_data) {
-    fetchListings({ bedrooms, neighborhood, bathrooms, graph_data })
-      .then(response => {
+    fetchListings({ bedrooms, neighborhood, bathrooms, graph_data }).then(
+      response => {
         this.setState(response);
-      });
+      }
+    );
   }
 
-  handleGraphChange(){
-    const graphDataType = this.state.graphDataType === "floor" ?
-      "pics" : "floor";
-    this.setState({graphDataType});
+  handleGraphChange() {
+    const graphDataType =
+      this.state.graphDataType === 'floor' ? 'pics' : 'floor';
+    this.setState({ graphDataType });
   }
 
   render() {
-    const dataHash = this.state.graphDataType === "floor" ?
-      this.state.graph_data.floor : this.state.graph_data.pics;
-    console.log(dataHash)
+    const dataHash =
+      this.state.graphDataType === 'floor'
+        ? this.state.graph_data.floor
+        : this.state.graph_data.pics;
     return (
       <div>
         <Header />
         <div className="container">
-          <Filter handleChange={this.handleChange}
-            handleGraphChange={this.handleGraphChange}/>
-          <Charts price={this.state.price} hash={dataHash}/>
-          <Gmap locations={this.state.locations} />
+          <Filter
+            handleChange={this.handleChange}
+            handleGraphChange={this.handleGraphChange}
+          />
+          <Charts price={this.state.price} hash={dataHash} />
         </div>
+        <Gmap locations={this.state.locations} />
       </div>
     );
   }

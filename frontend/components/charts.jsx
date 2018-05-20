@@ -1,8 +1,13 @@
 import React from 'react';
 import DonutChart from './donut_chart';
+import LineChart from './line_chart';
 
 class Charts extends React.Component {
   render() {
+    let price;
+    if (this.props.price) {
+      price = `$${this.props.price}`;
+    }
     const animationList = [
       'bounce',
       'pulse',
@@ -23,9 +28,14 @@ class Charts extends React.Component {
 
     return (
       <div className="price-container">
-        <h1 className={`animated ${animation} price`}>{this.props.price}</h1>
-        <div className="chart">
-          <DonutChart price={this.props.price} />
+        <div className="charts">
+          <div className="donut-chart">
+            <h1 className={`animated ${animation} price`}>{price}</h1>
+            <DonutChart price={this.props.price} />
+          </div>
+          <div className="line-chart">
+            <LineChart data={this.props.hash} />
+          </div>
         </div>
       </div>
     );
