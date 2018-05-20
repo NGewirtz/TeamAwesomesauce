@@ -17,7 +17,7 @@ class ListingsFilterForm extends React.Component {
       <div className="filter-form-container">
         <div className="filter-price">
           <div>
-            <label for="bedrooms">Bedrooms</label>
+            <label htmlFor="bedrooms">Bedrooms</label>
             <select id="filter-bedroom-select" name="bedrooms" onChange={() => this.updateBedroomsFilter()}>
               <option value="All">All</option>
               <option value="1">1</option>

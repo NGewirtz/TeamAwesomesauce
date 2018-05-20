@@ -14,7 +14,7 @@ class ListingsIndex extends React.Component {
   createList() {
     let listings = this.props.listings;
     return listings.map(listing => (
-      <li>Id: {listing.id}, Price: {listing.price}, Bedrooms: {listing.bedrooms}</li>)
+      <li>Id: {listing.id}, Bedrooms: {listing.bedrooms}</li>)
     );
   }
 

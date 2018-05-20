@@ -1,18 +1,6 @@
-<<<<<<< HEAD
-import React from 'react';
-
-class EstateMap extends React.Component {
-  render() {
-    return <div>This is map</div>;
-  }
-}
-
-export default EstateMap;
-=======
 import React from 'react';
 import ReactDOM from 'react-dom';
 import MarkerManager from './MarkerManager';
-
 
 class Gmap extends React.Component {
 
@@ -44,4 +32,3 @@ class Gmap extends React.Component {
 }
 
 export default Gmap;
->>>>>>> master
