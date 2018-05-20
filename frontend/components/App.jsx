@@ -16,8 +16,8 @@ class App extends React.Component {
     };
   }
 
-  handleChange(bedrooms, neighborhood, bathrooms, graphData) {
-    fetchListings({ bedrooms, neighborhood, bathrooms, graphData })
+  handleChange(bedrooms, neighborhood, bathrooms, graph_data) {
+    fetchListings({ bedrooms, neighborhood, bathrooms, graph_data })
       .then(response => {
         console.log(response);
         this.setState(response);
