@@ -28,7 +28,7 @@ class Listing < ApplicationRecord
   end
 
   def self.price(bedrooms, bathrooms, neighborhood)
-    bedrooms = find_median(:bedrooms, bedrooms)
+    bedrooms = find_median(:bedrooms, bedrooms.to_i)
     bathrooms = find_median(:bathrooms, bathrooms.to_f)
     neighborhood = find_median(:neighborhood, neighborhood)
     price = (bedrooms + bathrooms + neighborhood) / 3

@@ -13,11 +13,30 @@ class Gmap extends React.Component {
 
     const map = this.refs.map;
     this.map = new google.maps.Map(this.mapNode, mapOptions);
+    this.MarkerManager = new MarkerManager(this.map);
+    // console.log(this.props);
+    let testdata = {
+      1: {
+        id: 1,
+        location: {
+          latitude: 40.73191,
+          longitude: -74.99621
+        }
+      },
+      2: {
+        id: 2,
+        location: {
+          latitude: 40.731903,
+          longitude: -73.996193
+        }
+      }
+    };
 
+    this.MarkerManager.updateMarkers(testdata);
   }
 
   componentDidUpdate() {
-    this.MarkerManager.updateMarkers(this.props.listings);
+
 
     //here: register listeners to update the bounds param, if we will have one
   }
