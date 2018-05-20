@@ -103,6 +103,12 @@ header .logo {
   margin-left: 20px;
 }
 
+.container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
 .chart {
   width: 250px;
   height: 250px;
@@ -112,7 +118,6 @@ header .logo {
 .price-container {
   width: 300px;
   height: 320px;
-  margin: auto;
   margin-top: 50px;
   padding-top: 10px;
   text-align: center;
@@ -125,4 +130,59 @@ header .logo {
   background: -webkit-linear-gradient(#fa709a, #fee140);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.filter-form-container {
+  width: 300px;
+  height: 300px;
+  margin-left: 50px;
+}
+.filter-price {
+  margin: auto;
+}
+
+.filter-price div {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-family: sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  margin-bottom: 10px;
+}
+
+select {
+  /* background: transparent; */
+
+  font-size: 14px;
+  height: 29px;
+  padding: 5px; /* If you add too much padding here, the options won't show in IE */
+  width: 240px;
+  border: 0;
+  padding-left: 5px;
+  color: black;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  background: url(http://i62.tinypic.com/15xvbd5.png) no-repeat 96% 0;
+  background-color: #41a0db;
+  color: white;
+  overflow: hidden;
+  box-shadow: 1px 1px 3px 1px #505050;
+  -moz-appearance: window;
+  -webkit-appearance: none;
+  margin-bottom: 30px;
+  font-family: sans-serif;
+  cursor: pointer;
+}
+
+option {
+  font-weight: normal;
+  display: block;
+  white-space: pre;
+  min-height: 1.2em;
+  padding: 0px 2px 1px;
+  color: black;
 }
