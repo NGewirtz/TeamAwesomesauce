@@ -42,17 +42,14 @@ class Listing < ApplicationRecord
   end
 
   def self.graph_data(type)
-    hash = {}
-    if type == "floor"
-      floors = Listing.all.pluck(:floor).uniq
-      floors.each do |floor|
-        hash[floor] = find_median(:floor, floor)
-      end
-    else
-      pics = Listing.all.pluck(:number_of_pics).uniq
-      pics.each do |pic|
-        hash[pic] = find_median(:number_of_pics, pic)
-      end
+    hash = { floor: {}, pics: {} }
+    floors = Listing.all.pluck(:floor).uniq
+    floors.each do |floor|
+      hash[:floor][floor] = find_median(:floor, floor)
+    end
+    pics = Listing.all.pluck(:number_of_pics).uniq
+    pics.each do |pic|
+      hash[:pics][pic] = find_median(:number_of_pics, pic)
     end
     hash
   end
