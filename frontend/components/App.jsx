@@ -11,7 +11,6 @@ class App extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleGraphChange = this.handleGraphChange.bind(this);
     this.state = {
-      price: 5016,
       locations: [],
       graphData: {},
       graphDataType: "floor",
