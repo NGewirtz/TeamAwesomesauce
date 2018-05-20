@@ -28,7 +28,7 @@ class Charts extends React.Component {
 
     return (
       <div className="price-container">
-        <h2>Median Price</h2>
+        <h2>Estimated Price</h2>
         <div className="charts">
           <div className="donut-chart">
             <h1 className={`animated ${animation} price`}>{price}</h1>
