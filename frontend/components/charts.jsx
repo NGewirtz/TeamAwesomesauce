@@ -4,13 +4,13 @@ import LineChart from './line_chart';
 
 class Charts extends React.Component {
   render() {
-    let price;
-    if (!this.props.price) {
-      price = '';
-    }
-    let remiander = (this.props.price % 1000).toString();
-    price = Math.floor(this.props.price / 1000);
-    price = price > 0 ? `$${price},${remiander}` : `$${remiander}`;
+    // let price;
+    // if (!this.props.price) {
+    //   price = '';
+    // }
+    // let remiander = (this.props.price % 1000).toString();
+    // price = Math.floor(this.props.price / 1000);
+    // price = price > 0 ? `$${price},${remiander}` : `$${remiander}`;
     const animationList = [
       'bounce',
       'pulse',
@@ -39,7 +39,7 @@ class Charts extends React.Component {
             <DonutChart price={this.props.price} />
           </div>
           <div className="line-chart">
-            <LineChart />
+            <LineChart data={this.props.dataHash} />
           </div>
         </div>
       </div>
