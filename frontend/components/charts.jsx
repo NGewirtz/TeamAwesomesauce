@@ -4,8 +4,13 @@ import LineChart from './line_chart';
 
 class Charts extends React.Component {
   render() {
+    let price;
+    if (!this.props.price) {
+      price = '';
+    }
     let remiander = (this.props.price % 1000).toString();
-    let price = this.props.price / 1000;
+    price = Math.floor(this.props.price / 1000);
+    price = price > 0 ? `$${price},${remiander}` : `$${remiander}`;
     const animationList = [
       'bounce',
       'pulse',
