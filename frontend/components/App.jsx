@@ -9,6 +9,7 @@ class App extends React.Component {
   constructor() {
     super();
     this.handleChange = this.handleChange.bind(this);
+    this.handleGraphChange = this.handleGraphChange.bind(this);
     this.state = {
       price: 5016,
       locations: [],
@@ -32,14 +33,18 @@ class App extends React.Component {
       });
   }
 
+  handleGraphChange(){
+
+  }
+
   render() {
     return (
       <div>
         <Header />
         <div className="container">
-          <Filter handleChange={this.handleChange} />
-          <Charts price={this.state.price} hash={this.state.graphData}/>
-                    <Gmap locations={this.state.locations} />
+          <Filter handleChange={this.handleChange} handleGraphChange={this.handleGraphChange}/>
+          <Charts price={this.state.price} hash={this.state.graphData.floor}/>
+          <Gmap locations={this.state.locations} />
         </div>
       </div>
     );
