@@ -14,7 +14,7 @@ class Gmap extends React.Component {
     const map = this.refs.map;
     this.map = new google.maps.Map(this.mapNode, mapOptions);
     this.MarkerManager = new MarkerManager(this.map);
-    // console.log(this.props);
+
     let testdata = {
       1: {
         id: 1,

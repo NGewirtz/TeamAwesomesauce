@@ -28,13 +28,14 @@ class Charts extends React.Component {
 
     return (
       <div className="price-container">
+        <h2>Median Price</h2>
         <div className="charts">
           <div className="donut-chart">
             <h1 className={`animated ${animation} price`}>{price}</h1>
             <DonutChart price={this.props.price} />
           </div>
           <div className="line-chart">
-            <LineChart data={this.props.hash} />
+            <LineChart data={this.props.hash} title={this.props.title}/>
           </div>
         </div>
       </div>

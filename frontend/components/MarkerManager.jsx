@@ -5,21 +5,11 @@ export default class MarkerManager {
   }
 
   updateMarkers(listings) {
-
-    //keep a list of all the listings we're looking at now
-
-
-    // listings.forEach(listing => allListings[listing.id] = listing);
-    //for each listing, create a marker on map
     listings.forEach(
     pos => {
       this.createMarkerFromList(pos);
     }
     );
-
-
-    // console.log(this.markers);
-
   }
 
   createMarkerFromList(listing) {

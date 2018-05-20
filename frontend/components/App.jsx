@@ -55,9 +55,9 @@ class App extends React.Component {
             handleChange={this.handleChange}
             handleGraphChange={this.handleGraphChange}
           />
-          <Charts price={this.state.price} hash={dataHash} />
+        <Charts price={this.state.price} hash={dataHash} title={this.state.graphDataType}/>
+          <Gmap locations={this.state.locations} />
         </div>
-        <Gmap locations={this.state.locations} />
       </div>
     );
   }

@@ -69,11 +69,13 @@ class ListingsFilterForm extends React.Component {
             <select id="filter-neighborhood-select" name="neighborhoods" onChange={() => this.updateFilter()}>
               {this.createNeighborhoodOptions()}
             </select>
-            <label htmlFor="x-axis">Pictures or Floor</label>
-            <select id="floor-pics-select" name="x-axis" onChange={this.props.handleGraphChange}>
-              <option value="number_of_pics">Number of Pictures</option>
-              <option value="floor">Floor</option>
-            </select>
+            <div className="move-down">
+              <label htmlFor="x-axis">Pictures or Floor</label>
+              <select id="floor-pics-select" name="x-axis" onChange={this.props.handleGraphChange}>
+                <option value="number_of_pics">Number of Pictures</option>
+                <option value="floor">Floor</option>
+              </select>
+            </div>
           </div>
         </div>
       </div>

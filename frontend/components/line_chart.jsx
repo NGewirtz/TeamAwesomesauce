@@ -5,13 +5,11 @@ class LineChart extends React.Component {
   render() {
     const keys = Object.keys(this.props.data);
     const values = Object.values(this.props.data);
-    console.log(keys);
-    console.log(values);
     let data = {
       labels: keys,
       datasets: [
         {
-          label: 'My First dataset',
+          label: `Price VS ${this.props.title.charAt(0).toUpperCase() + this.props.title.slice(1)}`,
           fill: false,
           lineTension: 0.1,
           backgroundColor: 'rgba(75,192,192,0.4)',
@@ -40,7 +38,7 @@ class LineChart extends React.Component {
       }
     };
 
-    return <Line data={data} className="line" options={options} redraw />;
+    return <Line data={data} className="line" redraw />;
   }
 }
 
