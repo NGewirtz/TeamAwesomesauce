@@ -12,8 +12,8 @@ class App extends React.Component {
     this.handleGraphChange = this.handleGraphChange.bind(this);
     this.state = {
       locations: [],
-      graph_data: { floor: {}, pics: {} },
-      graphDataType: 'pics'
+      graph_data: { floor: {}, pics: {}},
+      graphDataType: "pics",
     };
   }
 
