@@ -13,7 +13,8 @@ class App extends React.Component {
     this.state = {
       price: 5016,
       locations: [],
-      graphData: {}
+      graphData: {},
+      graphDataType: "floor",
     };
   }
 
@@ -34,16 +35,21 @@ class App extends React.Component {
   }
 
   handleGraphChange(){
-
+    const graphDataType = this.state.graphDataType === "floor" ?
+      "pics" : "floor";
+    this.setState({graphDataType});
   }
 
   render() {
+    const dataHash = this.state.graphDataType === "floor" ?
+      this.state.graphData.floor : this.state.graphData.pics;
     return (
       <div>
         <Header />
         <div className="container">
-          <Filter handleChange={this.handleChange} handleGraphChange={this.handleGraphChange}/>
-          <Charts price={this.state.price} hash={this.state.graphData.floor}/>
+          <Filter handleChange={this.handleChange}
+            handleGraphChange={this.handleGraphChange}/>
+          <Charts price={this.state.price} hash={dataHash}/>
           <Gmap locations={this.state.locations} />
         </div>
       </div>

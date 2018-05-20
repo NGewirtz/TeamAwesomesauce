@@ -70,7 +70,8 @@ class ListingsFilterForm extends React.Component {
               {this.createNeighborhoodOptions()}
             </select>
             <label htmlFor="x-axis">Pictures or Floor</label>
-            <select id="floor-pics-select" name="x-axis">
+            <select id="floor-pics-select" name="x-axis" onChange={this.props.handleGraphChange}>
+              {this.createNeighborhoodOptions()}>
               <option value="number_of_pics">Number of Pictures</option>
               <option value="floor">Floor</option>
             </select>
