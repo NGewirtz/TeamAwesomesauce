@@ -6,7 +6,7 @@ class Charts extends React.Component {
   render() {
     let price;
     if (this.props.price) {
-      price = `${this.props.price}`;
+      price = `$${this.props.price}`;
     }
     const animationList = [
       'bounce',

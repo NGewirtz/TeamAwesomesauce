@@ -3,29 +3,12 @@ import { Line } from 'react-chartjs-2';
 
 class LineChart extends React.Component {
   render() {
+    const keys = Object.keys(this.props.data);
+    const values = Object.values(this.props.data);
+    console.log(keys);
+    console.log(values);
     let data = {
-      labels: [
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        7,
-        8,
-        9,
-        10,
-        11,
-        12,
-        13,
-        14,
-        15,
-        16,
-        17,
-        18,
-        19,
-        20
-      ],
+      labels: keys,
       datasets: [
         {
           label: 'My First dataset',
@@ -47,28 +30,7 @@ class LineChart extends React.Component {
           pointRadius: 1,
           pointHitRadius: 10,
           skipLabels: 3,
-          data: [
-            1,
-            2,
-            3,
-            4,
-            5,
-            6,
-            7,
-            82,
-            9,
-            12,
-            153,
-            14,
-            15,
-            16,
-            17,
-            263,
-            24,
-            27,
-            47,
-            49
-          ]
+          data: values
         }
       ]
     };
