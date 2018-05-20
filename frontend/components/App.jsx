@@ -12,7 +12,7 @@ class App extends React.Component {
     this.handleGraphChange = this.handleGraphChange.bind(this);
     this.state = {
       locations: [],
-      graphData: {},
+      graph_data: { floor: {}, pics: {}},
       graphDataType: "floor",
     };
   }
@@ -28,7 +28,6 @@ class App extends React.Component {
   handleChange(bedrooms, neighborhood, bathrooms, graph_data) {
     fetchListings({ bedrooms, neighborhood, bathrooms, graph_data })
       .then(response => {
-        console.log(response);
         this.setState(response);
       });
   }
@@ -41,7 +40,8 @@ class App extends React.Component {
 
   render() {
     const dataHash = this.state.graphDataType === "floor" ?
-      this.state.graphData.floor : this.state.graphData.pics;
+      this.state.graph_data.floor : this.state.graph_data.pics;
+    console.log(dataHash)
     return (
       <div>
         <Header />
