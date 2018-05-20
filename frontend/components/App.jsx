@@ -11,15 +11,17 @@ class App extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.state = {
       price: 5026,
-      locations: []
+      locations: [],
+      graphData: {}
     };
   }
 
-  handleChange(bedrooms, neighborhood, bathrooms) {
-    fetchListings({ bedrooms, neighborhood, bathrooms }).then(response => {
-      console.log(response);
-      this.setState(response);
-    });
+  handleChange(bedrooms, neighborhood, bathrooms, graphData) {
+    fetchListings({ bedrooms, neighborhood, bathrooms, graphData })
+      .then(response => {
+        console.log(response);
+        this.setState(response);
+      });
   }
 
   render() {

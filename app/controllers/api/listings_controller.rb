@@ -4,7 +4,8 @@ class Api::ListingsController < ApplicationController
       format.json do
         render json: {
           price: get_price,
-          locations: get_locations
+          locations: get_locations,
+          graph_data: get_graph_data
         }.to_json
       end
     end
@@ -25,7 +26,11 @@ class Api::ListingsController < ApplicationController
     )
   end
 
+  def get_graph_data
+    Listing.graph_data(location_params[:graph_data])
+  end
+
   def location_params
-    params.permit(:bedrooms, :bathrooms, :neighborhood)
+    params.permit(:bedrooms, :bathrooms, :neighborhood, :graph_data)
   end
 end
