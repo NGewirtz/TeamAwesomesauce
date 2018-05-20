@@ -5,76 +5,76 @@ class Charts extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { price: 5000 };
+    this.state = { price: '$5,000', ctx: null };
+  }
+
+  componentDidMount() {
+    const ctx = document
+      .querySelector('.chartjs-render-monitor')
+      .getContext('2d');
+
+    this.setState({ ctx });
   }
 
   render() {
     const animationList = [
       'bounce',
-      'flash',
       'pulse',
-      'rubberBand',
-      'shake',
       'headShake',
-      'swing',
       'tada',
-      'wobble',
       'jello',
       'bounceIn',
-      'bounceInDown',
-      'bounceInLeft',
-      'bounceInRight',
-      'bounceInUp',
       'fadeIn',
-      'fadeInDown',
-      'fadeInDownBig',
-      'fadeInLeft',
-      'fadeInLeftBig',
-      'fadeInRight',
-      'fadeInRightBig',
-      'fadeInUp',
-      'fadeInUpBig',
       'flipInX',
       'flipInY',
-      'lightSpeedIn',
-      'rotateIn',
-      'rotateInDownLeft',
-      'rotateInDownRight',
-      'rotateInUpLeft',
-      'rotateInUpRight',
-      'hinge',
-      'jackInTheBox',
-      'rollIn',
-      'zoomIn',
-      'zoomInDown',
-      'zoomInLeft',
-      'zoomInRight',
-      'zoomInUp',
-      'slideInDown',
-      'slideInLeft',
-      'slideInRight',
-      'slideInUp'
+      'zoomIn'
     ];
+
     let animation =
       animationList[
         Math.floor(Math.random() * Math.floor(animationList.length))
       ];
+
+    let gradient;
+
+    if (this.state.ctx) {
+      let ctx = this.state.ctx;
+      gradient = ctx.createLinearGradient(0, 0, 200, 0);
+      gradient.addColorStop(0, '#4facfe');
+      gradient.addColorStop(1, '#00f2fe');
+      ctx.fillStyle = gradient;
+      ctx.fillRect(10, 10, 200, 100);
+    }
+
     let data = {
+      labels: ['price'],
       datasets: [
         {
-          data: [this.state.price],
-          backgroundColor: 'rgba(255,99,132,0.2)',
-          borderColor: 'rgba(255,99,132,1)',
+          data: [5000],
+          backgroundColor: gradient,
           borderWidth: 1,
-          hoverBackgroundColor: 'rgba(255,99,132,0.4)',
-          hoverBorderColor: 'rgba(255,99,132,1)'
+          hoverBackgroundColor: 'rgba(120, 187, 232, 0.4)'
         }
       ]
     };
+    let options = {
+      legend: {
+        display: false
+      }
+    };
+
     return (
       <div className="price-container">
         <h1 className={`animated ${animation} price`}>{this.state.price}</h1>
-        <Doughnut data={data} width={200} height={200} />
+        <div className="chart">
+          <Doughnut
+            className="donut"
+            data={data}
+            width={300}
+            height={300}
+            options={options}
+          />
+        </div>
       </div>
     );
   }

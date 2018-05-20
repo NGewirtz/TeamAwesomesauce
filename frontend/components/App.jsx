@@ -1,13 +1,7 @@
 import React from 'react';
 
 import { Provider } from 'react-redux';
-import {
-  Route,
-  Redirect,
-  Switch,
-  Link,
-  HashRouter
-} from 'react-router-dom';
+import { Route, Redirect, Switch, Link, HashRouter } from 'react-router-dom';
 
 import Gmap from './map';
 import Charts from './charts';
