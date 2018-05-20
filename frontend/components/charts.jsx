@@ -5,7 +5,7 @@ class Charts extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { price: '$5,000', ctx: null };
+    this.state = { ctx: null };
   }
 
   componentDidMount() {
@@ -50,7 +50,7 @@ class Charts extends React.Component {
       labels: ['price'],
       datasets: [
         {
-          data: [5000],
+          data: [this.props.price],
           backgroundColor: gradient,
           borderWidth: 1,
           hoverBackgroundColor: 'rgba(120, 187, 232, 0.4)'
@@ -65,7 +65,7 @@ class Charts extends React.Component {
 
     return (
       <div className="price-container">
-        <h1 className={`animated ${animation} price`}>{this.state.price}</h1>
+        <h1 className={`animated ${animation} price`}>{this.props.price}</h1>
         <div className="chart">
           <Doughnut
             className="donut"

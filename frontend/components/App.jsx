@@ -11,13 +11,17 @@ class App extends React.Component {
     super();
     this.handleChange = this.handleChange.bind(this);
     this.state = {
-      price: 5000,
+      price: 4000,
       locations: []
     };
   }
 
   handleChange(bedrooms, neighborhood, bathrooms) {
-    this.setState(fetchListings({ bedrooms, neighborhood, bathrooms }));
+    fetchListings({ bedrooms, neighborhood, bathrooms })
+      .then(response => {
+        console.log(response);
+        this.setState(response);
+      });
   }
 
   render() {
@@ -25,7 +29,6 @@ class App extends React.Component {
       <div>
         <Header />
         <Filter handleChange={this.handleChange}/>
-        <Gmap locations={this.state.locations}/>
         <Charts price={this.state.price}/>
       </div>
     );
