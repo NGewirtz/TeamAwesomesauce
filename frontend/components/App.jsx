@@ -10,10 +10,18 @@ class App extends React.Component {
     super();
     this.handleChange = this.handleChange.bind(this);
     this.state = {
-      price: 5026,
+      price: 5016,
       locations: [],
       graphData: {}
     };
+  }
+
+  componentDidMount() {
+    fetchListings({ bedrooms: 0, neighborhood: "Battery Park City", bathrooms: 1, graph_data: "pics" })
+      .then(response => {
+        console.log(response);
+        this.setState(response);
+      });
   }
 
   handleChange(bedrooms, neighborhood, bathrooms, graph_data) {
@@ -30,8 +38,8 @@ class App extends React.Component {
         <Header />
         <div className="container">
           <Filter handleChange={this.handleChange} />
-          <Charts price={this.state.price} />
-          <Gmap locations={this.state.locations} />
+          <Charts price={this.state.price} hash={this.state.graphData}/>
+                    <Gmap locations={this.state.locations} />
         </div>
       </div>
     );
