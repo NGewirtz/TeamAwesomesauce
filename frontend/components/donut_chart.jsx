@@ -35,7 +35,7 @@ class DonutChart extends React.Component {
           data: [this.props.price],
           backgroundColor: gradient,
           borderWidth: 1,
-          hoverBackgroundColor: 'rgba(120, 187, 232, 0.4)'
+          hoverBackgroundColor: '#63a4ff'
         }
       ]
     };
@@ -49,8 +49,8 @@ class DonutChart extends React.Component {
       <Doughnut
         className="donut"
         data={data}
-        width={300}
-        height={300}
+        width={200}
+        height={200}
         options={options}
         redraw
       />
