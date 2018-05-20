@@ -1,33 +1,22 @@
 export default class MarkerManager {
   constructor(map) {
     this.map = map;
-    this.markers = {};
+    this.markers = [];
   }
 
   updateMarkers(listings) {
 
     //keep a list of all the listings we're looking at now
-    const allListings = {};
 
 
     // listings.forEach(listing => allListings[listing.id] = listing);
-
-    Object.entries(listings).forEach(
-    ([key, value]) => {
-      allListings[key] = value;
-      this.createMarkerFromList(value);
+    //for each listing, create a marker on map
+    listings.forEach(
+    pos => {
+      this.createMarkerFromList(pos);
     }
     );
-    // console.log(allListings);
-    //for each listing, create a marker on map
-    // listings
-    // .filter(listing => !this.markers[listing.id])
-    // .forEach(newlisting => this.createMarkerFromList(newlisting));
 
-    //get rid of old marks that aren't in allListings anymore
-    Object.keys(this.markers)
-    .filter(listingID => !allListings[ListingID])
-    .forEach((ListingID) => this.removeMarker(this.markers[ListingID]));
 
     // console.log(this.markers);
 
@@ -35,20 +24,35 @@ export default class MarkerManager {
 
   createMarkerFromList(listing) {
     //here is where the actual creation happens
-    console.log(listing);
-    const position = new google.maps.LatLng(listing.location.latitude, listing.location.longitude);
-    const marker = new google.maps.Marker({
+
+    let position = new google.maps.LatLng(listing[0], listing[1]);
+    let marker = new google.maps.Marker({
       position,
       map: this.map,
       ListingID: listing.id
     });
 
+    this.markers.push(marker);
+
     // marker.addListener('click', () => this.handleClick(bench));
     // this.markers[marker.benchId] = marker;
   }
 
-  removeMarker(marker) {
-    this.markers[marker.ListingID].setMap(null);
-    delete this.markers[marker.ListingID];
-  }
+  // Sets the map on all markers in the array.
+      setMapOnAll(map) {
+        for (var i = 0; i < this.markers.length; i++) {
+          this.markers[i].setMap(map);
+        }
+      }
+
+      // Removes the markers from the map, but keeps them in the array.
+      clearMarkers() {
+        this.setMapOnAll(null);
+      }
+
+      // Deletes all markers in the array by removing references to them.
+      deleteMarkers() {
+        this.clearMarkers();
+        this.markers = [];
+      }
 }

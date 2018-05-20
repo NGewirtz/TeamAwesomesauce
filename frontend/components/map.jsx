@@ -32,11 +32,12 @@ class Gmap extends React.Component {
       }
     };
 
-    this.MarkerManager.updateMarkers(testdata);
+
   }
 
   componentDidUpdate() {
-
+    this.MarkerManager.deleteMarkers();
+    this.MarkerManager.updateMarkers(this.props.locations);
 
     //here: register listeners to update the bounds param, if we will have one
   }

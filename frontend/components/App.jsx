@@ -9,17 +9,32 @@ class App extends React.Component {
   constructor() {
     super();
     this.handleChange = this.handleChange.bind(this);
+    this.handleGraphChange = this.handleGraphChange.bind(this);
     this.state = {
-      price: 5026,
-      locations: []
+      price: 5016,
+      locations: [],
+      graphData: {}
     };
   }
 
-  handleChange(bedrooms, neighborhood, bathrooms) {
-    fetchListings({ bedrooms, neighborhood, bathrooms }).then(response => {
-      console.log(response);
-      this.setState(response);
-    });
+  componentDidMount() {
+    fetchListings({ bedrooms: 0, neighborhood: "Battery Park City", bathrooms: 1, graph_data: "pics" })
+      .then(response => {
+        console.log(response);
+        this.setState(response);
+      });
+  }
+
+  handleChange(bedrooms, neighborhood, bathrooms, graph_data) {
+    fetchListings({ bedrooms, neighborhood, bathrooms, graph_data })
+      .then(response => {
+        console.log(response);
+        this.setState(response);
+      });
+  }
+
+  handleGraphChange(){
+
   }
 
   render() {
@@ -27,8 +42,9 @@ class App extends React.Component {
       <div>
         <Header />
         <div className="container">
-          <Filter handleChange={this.handleChange} />
-          <Charts price={this.state.price} />
+          <Filter handleChange={this.handleChange} handleGraphChange={this.handleGraphChange}/>
+          <Charts price={this.state.price} hash={this.state.graphData.floor}/>
+          <Gmap locations={this.state.locations} />
         </div>
       </div>
     );

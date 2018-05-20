@@ -14,6 +14,9 @@ class Listing < ApplicationRecord
         bathrooms = item["bathrooms"] ? item["bathrooms"] : "NA"
         latitude = item["building"]["location"] ? item["building"]["location"]["latitude"] : "NA"
         longitude = item["building"]["location"] ? item["building"]["location"]["longitude"] : "NA"
+        pics = item["photos"].length
+        floor = item["floor"]
+        amenities = item["amenities"].length
         Listing.create!(
           price: item["price"],
           bedrooms: bedrooms,
@@ -21,7 +24,10 @@ class Listing < ApplicationRecord
           neighborhood: neighborhood,
           square_footage: square_footage,
           latitude: latitude,
-          longitude: longitude
+          longitude: longitude,
+          number_of_pics: pics,
+          floor: floor,
+          amenities: amenities
         )
       end
     end
@@ -33,6 +39,19 @@ class Listing < ApplicationRecord
     neighborhood = find_median(:neighborhood, neighborhood)
     price = (bedrooms + bathrooms + neighborhood) / 3
     price
+  end
+
+  def self.graph_data(type)
+    hash = { floor: {}, pics: {} }
+    floors = Listing.all.pluck(:floor).uniq
+    floors.each do |floor|
+      hash[:floor][floor] = find_median(:floor, floor)
+    end
+    pics = Listing.all.pluck(:number_of_pics).uniq
+    pics.each do |pic|
+      hash[:pics][pic] = find_median(:number_of_pics, pic)
+    end
+    hash
   end
 
   private

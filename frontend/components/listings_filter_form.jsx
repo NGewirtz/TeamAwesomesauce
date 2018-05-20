@@ -31,7 +31,10 @@ class ListingsFilterForm extends React.Component {
     let bathroomValue = bathroomFilter.value;
     let neighborhoodFilter = document.getElementById("filter-neighborhood-select");
     let neighborhoodValue = neighborhoodFilter.value;
-    this.props.handleChange(bedroomValue, neighborhoodValue, bathroomValue);
+    let floorPicsFilter = document.getElementById("floor-pics-select");
+    let floorPicsValue = floorPicsFilter.value;
+
+    this.props.handleChange(bedroomValue, neighborhoodValue, bathroomValue, floorPicsValue);
   }
 
   render() {
@@ -65,6 +68,11 @@ class ListingsFilterForm extends React.Component {
             <label htmlFor="neighborhoods">Neighborhood</label>
             <select id="filter-neighborhood-select" name="neighborhoods" onChange={() => this.updateFilter()}>
               {this.createNeighborhoodOptions()}
+            </select>
+            <label htmlFor="x-axis">Pictures or Floor</label>
+            <select id="floor-pics-select" name="x-axis">
+              <option value="number_of_pics">Number of Pictures</option>
+              <option value="floor">Floor</option>
             </select>
           </div>
         </div>
