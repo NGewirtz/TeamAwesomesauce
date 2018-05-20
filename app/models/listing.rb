@@ -41,7 +41,7 @@ class Listing < ApplicationRecord
     price
   end
 
-  def self.graph_data(type)
+  def self.graph_data
     hash = { floor: {}, pics: {} }
     floors = Listing.all.pluck(:floor).uniq
     floors.each do |floor|

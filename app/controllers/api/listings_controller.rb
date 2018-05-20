@@ -27,7 +27,7 @@ class Api::ListingsController < ApplicationController
   end
 
   def get_graph_data
-    Listing.graph_data(location_params[:graph_data])
+    Listing.graph_data
   end
 
   def location_params
