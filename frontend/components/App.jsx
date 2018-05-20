@@ -13,7 +13,7 @@ class App extends React.Component {
     this.state = {
       locations: [],
       graph_data: { floor: {}, pics: {}},
-      graphDataType: "floor",
+      graphDataType: "pics",
     };
   }
 
