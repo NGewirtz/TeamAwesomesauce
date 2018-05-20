@@ -1,21 +1,34 @@
 import React from 'react';
-
-import { Provider } from 'react-redux';
-import { Route, Redirect, Switch, Link, HashRouter } from 'react-router-dom';
-
 import Gmap from './map';
 import Charts from './charts';
-import ListingsIndexContainer from './listings_index_container';
-import ListingsFilterFormContainer from './listings_filter_form_container';
+import Filter from './listings_filter_form';
+import { fetchListings } from '../util/listings_api_util.js';
 
-const App = () => (
-  <div>
-    <h1>NestiYoooo</h1>
-    <Gmap />
-    <ListingsFilterFormContainer />
-    <ListingsIndexContainer />
-    <Charts />
-  </div>
-);
+class App extends React.Component {
+
+  constructor() {
+    super();
+    this.handleChange = this.handleChange.bind(this);
+    this.state = {
+      price: 5000,
+      locations: []
+    };
+  }
+
+  handleChange(bedrooms, neighborhood, bathrooms) {
+    this.setState(fetchListings(bedrooms, neighborhood, bathrooms));
+  }
+
+  render() {
+    return (
+      <div>
+        <h1>NestiYoooo</h1>
+        <Filter handleChange={this.handleChange}/>
+        <Gmap locations={this.state.locations}/>
+        <Charts price={this.state.price}/>
+      </div>
+    );
+  }
+}
 
 export default App;
