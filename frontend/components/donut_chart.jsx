@@ -52,6 +52,7 @@ class DonutChart extends React.Component {
         width={300}
         height={300}
         options={options}
+        redraw
       />
     );
   }
