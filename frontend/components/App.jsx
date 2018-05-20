@@ -3,6 +3,7 @@ import Gmap from './map';
 import Charts from './charts';
 import Filter from './listings_filter_form';
 import { fetchListings } from '../util/listings_api_util.js';
+import Header from './header';
 
 class App extends React.Component {
 
@@ -16,13 +17,13 @@ class App extends React.Component {
   }
 
   handleChange(bedrooms, neighborhood, bathrooms) {
-    this.setState(fetchListings(bedrooms, neighborhood, bathrooms));
+    this.setState(fetchListings({ bedrooms, neighborhood, bathrooms }));
   }
 
   render() {
     return (
       <div>
-        <h1>NestiYoooo</h1>
+        <Header />
         <Filter handleChange={this.handleChange}/>
         <Gmap locations={this.state.locations}/>
         <Charts price={this.state.price}/>
