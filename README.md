@@ -2,7 +2,7 @@
 
 ## Nestio Price Estimator
 
-React on Rails App using historical renting data to estimate the price of a new rental. Additionally the Google Maps API, and React Chart.js were used for data visualization.
+React on Rails App using historical apartment rental data to estimate the price of a new rental. Additionally the Google Maps API, and React Chart.js are used for data visualization.
 
 Contributors:
 [Robert O'Connor](https://github.com/rgoc123)
