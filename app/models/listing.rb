@@ -37,20 +37,13 @@ class Listing < ApplicationRecord
     bedrooms = find_median(:bedrooms, bedrooms.to_i)
     bathrooms = find_median(:bathrooms, bathrooms.to_f)
     neighborhood = find_median(:neighborhood, neighborhood)
-    price = (bedrooms + bathrooms + neighborhood) / 3
-    price
+    (bedrooms + bathrooms + neighborhood) / 3
   end
 
   def self.graph_data
     hash = { floor: {}, pics: {} }
-    floors = Listing.all.pluck(:floor).uniq
-    floors.each do |floor|
-      hash[:floor][floor] = find_median(:floor, floor)
-    end
-    pics = Listing.all.pluck(:number_of_pics).uniq
-    pics.each do |pic|
-      hash[:pics][pic] = find_median(:number_of_pics, pic)
-    end
+    add_to_hash(pluck_uniq(:floor), :floor, :floor, hash)
+    add_to_hash(pluck_uniq(:number_of_pics), :pics, :number_of_pics, hash)
     hash
   end
 
@@ -58,9 +51,17 @@ class Listing < ApplicationRecord
 
   def self.find_median(sym, val)
     all = Listing.where(sym => val).order('price')
-    count = all.count
-    median_price = all[count/2].price
-    median_price
+    all[all.count/2].price
+  end
+
+  def self.pluck_uniq(sym)
+    Listing.all.pluck(sym).uniq
+  end
+
+  def self.add_to_hash(arr, sym, med, hash)
+    arr.each do |el|
+      hash[sym][el] = find_median(med, el)
+    end
   end
 
 end
